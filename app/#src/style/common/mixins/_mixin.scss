@@ -1,0 +1,38 @@
+/* Меди запросы */
+@mixin respond ($breakpoint) {
+    @if $breakpoint == desktop {
+        @media (max-width: 1199.98px){
+            @content;
+        }
+    }
+    @if $breakpoint == notebook {
+        @media (max-width: 991.98px){
+            @content;
+        }
+    }
+    @if $breakpoint == tablet {
+        @media (max-width: 767.98px){
+            @content;
+        }
+    }
+    @if $breakpoint == mobile {
+        @media (max-width: 575.98px){
+            @content;
+        }
+    }
+}
+
+
+@mixin media($breakpoint){
+    @media (max-width: $breakpoint){
+        @content;
+    }
+}
+
+/* flex */
+@mixin flex($jc:center, $ai:center){
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+}
+

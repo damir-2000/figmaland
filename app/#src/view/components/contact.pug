@@ -1,0 +1,44 @@
+section.contact 
+    .container 
+        h2.contact__title.title Contact Us
+        p.contact__sub-title.sub-title Most calendars are designed for teams. Slate is designed for freelancers
+        
+        .contact__row.row 
+            .contact__col.contact__col-left.col-xl-5 
+                form(action="").contact-form
+                    h4.contact-form__title Contact Us
+                    
+                    input(type="text" placeholder = "Your Name").contact-form__input
+                    
+                    input(type="text" placeholder = "Your Email").contact-form__input
+                    
+                    textarea(placeholder = "Your Email").contact-form__textarea
+                    button.contact-form__btn.btn Send
+                    
+            
+            .contact__col.contact__col-right.col-xl-7 
+                .contact-info
+                    .contact-info__address
+                        i.fas.fa-map-marker-alt.contact-info__icon
+                        p.contact-info__text 6386 Spring St undefined Anchorage, Georgia 12473 United States
+                        
+                    .contact-info__mobile
+                        i.fas.fa-mobile-alt.contact-info__icon
+                        p.contact-info__text (843) 555-0130
+                        
+                    .contact-info__email
+                        i.far.fa-envelope.contact-info__icon
+                        p.contact-info__text willie.jennings@example.com
+                
+                .contact__map-wrapper 
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.15266970586!2d-122.42051913020413!3d37.77855642763602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808580997aeae663%3A0xb2706dff83574f4a!2z0KHQuNGC0Lgt0YXQvtC70Lsg0KHQsNC9LdCk0YDQsNC90YbQuNGB0LrQvg!5e0!3m2!1sru!2s!4v1614761459623!5m2!1sru!2s" class='contact__map' style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                
+                .contact__sociaty.sociaty 
+                    a.sociaty__link(href="") 
+                        i.fab.fa-twitter.sociaty__link-icon 
+                    a.sociaty__link(href="") 
+                        i.fab.fa-facebook-square.sociaty__link-icon 
+                    a.sociaty__link(href="") 
+                        i.fab.fa-linkedin.sociaty__link-icon 
+                    
+                    

@@ -1,0 +1,164 @@
+.scroll-stop{
+    overflow: hidden;
+}
+.player{
+    position: relative;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    
+    &__video{
+        
+        
+        width: 100%;
+        
+    }
+    &__nav{
+        
+        background: linear-gradient(rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.363) 100%);
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        display: none;
+        padding: 10px 10px 0;
+        &_active{
+            display: block;
+        }
+    }
+    &-controls{
+        user-select:none;
+        
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__left,&__right{
+            display: flex;
+            align-items: center;
+        }
+        
+        &__btn{
+            width: 30px;
+            display: inline-block;
+            font-size: 30px;
+            color: #fff;
+            background: none;
+            border: none;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            &:hover{
+                color: rgb(211, 211, 211);
+                
+            }
+        }
+        &__volume{
+            user-select:none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            &:hover &-bar{
+                display: block;
+            }
+            &-bar{
+                display: block;
+                position: relative;
+                user-select:none;
+                width: 100px;
+                height: 7px;
+                background: rgba(0, 0, 0, 0.472);
+                z-index: 100;
+               &-progress{
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    user-select:none;
+                    background: #fff; 
+               } 
+            }
+        }
+        &__setting-menu{
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.472);
+            display: none;
+            &_active{
+                display: block;
+            }
+            &-title{
+                color: #fff;
+                font-size: 16px;
+                text-align: center;
+                border-bottom: 1px solid #fff;
+                padding: 10px;
+                background: rgba(0, 0, 0, 0.185);
+            }
+            &-speed{
+                
+                .player__speed{
+                    padding: 5px 50px 5px 20px;
+                    color: #fff;
+                    font-size: 15px;
+                    background: rgba(0, 0, 0, 0.185);
+                    cursor: pointer;
+                    &:hover{
+                        background: rgba(0, 0, 0, 0);
+                    }
+                    &_active{
+                        color: rgb(255, 217, 0);
+                    }
+                }
+            }
+        }
+    }
+    &-time{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 120px;
+        &__curent{
+          width: 50px;
+        }
+        &__duration{
+            width: 50px;
+        }
+        span{
+            user-select:none;
+            display: inline-block;
+            color: #fff;
+            font-size: 20px;
+        }
+    }
+    &-progress-bar{
+        position: relative;
+        width: 100%;
+        height: 8px;
+        background: rgba(0, 0, 0, 0.472);
+        user-select:none;
+        &__time,&__buffer{
+            position: absolute;
+            height: 100%;
+            left: 0;
+            top: 0;
+            width: 0%;
+            background: $primary;
+            user-select:none;
+            z-index: 2;
+            
+        }
+        &__buffer{
+            transition: 1s;
+            background: rgba(255, 255, 255, 0.472);
+            z-index: 1;
+        }
+    }
+    
+}

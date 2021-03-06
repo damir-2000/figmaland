@@ -1,0 +1,75 @@
+section.features
+    .container
+        h2.title.features__title Features
+        p.sub-title.features__sub-title Most calendars are designed for teams. Slate is designed for freelancers
+        
+        .row.features__row
+            .features__col.col-xl-3
+                img(src="./icons/mdi_drawing.svg", alt="").features__col-img
+                h4.features__col-title OpenType features Variable fonts
+                p.features__col-text Slate helps you see how many more days you need to work to reach your financial goal.
+                
+            .features__col.col-xl-3
+                img(src="./icons/mdi_draw.svg", alt="").features__col-img
+                h4.features__col-title OpenType features Variable fonts
+                p.features__col-text Slate helps you see how many more days you need to work to reach your financial goal.
+                
+            .features__col.col-xl-3
+                img(src="./icons/mdi_brush.svg", alt="").features__col-img
+                h4.features__col-title OpenType features Variable fonts
+                p.features__col-text Slate helps you see how many more days you need to work to reach your financial goal.
+    
+    
+        .features__player.player
+            video(src="https://v.mover.uz/bMM6Ok7v_h.mp4" type="video/mp4" poster = './images/content/poster.webp' ).player__video
+            
+            .player__nav.player__nav_active
+                .player-progress-bar
+                    .player-progress-bar__time
+                    .player-progress-bar__buffer
+                
+                .player-controls
+                    .player-controls__left
+                        button.fas.fa-play.player-controls__btn.player-controls__play
+                        
+                        .player-controls__volume
+                            .player-controls__btn.player-controls__volume-btn.fas.fa-volume-up
+                            
+                            .player-controls__volume-bar
+                                .player-controls__volume-bar-progress
+                        
+                        .player-time
+                            span.player-time__curent
+                                span.player-time__curent-minute 0
+                                span :
+                                span.player-time__curent-sec 00
+                            span /  
+                            span.player-time__duration
+                                span.player-time__duration-minute 0
+                                span :
+                                span.player-time__duration-sec 00
+                        
+                        
+                        
+                        
+                    .player-controls__right
+                        button.fas.fa-cog.player-controls__btn.player-controls__setting
+                        
+                        button.fas.fa-expand.player-controls__btn.player-controls__screen
+                        
+                        .player-controls__setting-menu
+                            h5.player-controls__setting-menu-title Скорость
+                                
+                            ul.player-controls__setting-menu-speed
+                                li(speed = '2').player__speed 2
+                                li(speed = '1.5').player__speed 1.5
+                                li(speed = '1.25').player__speed 1.25
+                                li(speed = '1').player__speed.player__speed_active Обычная
+                                li(speed = '0.75').player__speed 0.75
+                                li(speed = '0.5').player__speed 0.5
+                                li(speed = '0.25').player__speed 0.25
+                                
+                                
+                        
+                 
+                

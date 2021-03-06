@@ -1,0 +1,57 @@
+.subscribe{
+    padding: 160px 0 50px;
+    &__row{}
+    &__col{
+        &-left{}
+        &-right{
+            padding-top: 70px;
+        }
+    }
+    &__top-title{
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: 0.1px;
+        color: $text;
+        margin-bottom: 17px;
+    }
+    &__title{
+        text-align: left;
+        margin-bottom: 35px;
+    }
+    &-form{
+        &__title{
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 28px;
+            letter-spacing: 0.1px;
+            color: $text;
+        }
+        &__text{
+            font-size: 18px;
+            line-height: 25px;
+            letter-spacing: 0.2px;
+            color: $second-text;
+            margin-bottom: 36px;
+        }
+        &__wrapper{
+            display: flex;
+            align-items: center;
+            
+        }
+        &__input{
+            display: inline-block;
+            background: $gray;
+            padding: 19px 38px;
+            border: 1px solid #E8E8E8;
+            border-radius: 39px;
+
+        }
+        &__btn{
+            padding: 19px 38px;
+            font-weight: 400;
+            margin-left: 12px;
+            
+        }
+    }
+}

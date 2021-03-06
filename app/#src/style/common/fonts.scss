@@ -1,0 +1,24 @@
+@mixin font($font_name, $file_name, $weight, $style) {
+    @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+    font-weight: #{$weight};
+    font-style: #{$style};
+    }
+}
+
+@include font('Roboto', 'Roboto/Roboto-Regular', 400, normal);
+
+@include font('Graphik', 'Graphik/Graphik-Thin', 100, normal);
+@include font('Graphik', 'Graphik/Graphik-ExtraLight', 200, normal);
+@include font('Graphik', 'Graphik/Graphik-Light', 300, normal);
+@include font('Graphik', 'Graphik/Graphik-Regular', 400, normal);
+@include font('Graphik', 'Graphik/Graphik-Medium', 500, normal);
+@include font('Graphik', 'Graphik/Graphik-SemiBold', 600, normal);
+@include font('Graphik', 'Graphik/Graphik-ExtraBold', 800, normal);
+@include font('Graphik', 'Graphik/Graphik-Black', 900, normal);
+@include font('Graphik', 'Graphik/Graphik-Super', 900, normal);
+@include font('Graphik', 'Graphik/Graphik-Bold', bold, normal);
+
+

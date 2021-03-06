@@ -1,0 +1,46 @@
+.title{
+    font-size: 48px;
+    line-height: 55px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: $text;
+    margin-bottom: 27px;
+    font-weight: 400;
+}
+.sub-title{
+    font-size: 28px;
+    line-height: 40px;
+    letter-spacing: 0.2px;
+    color: $second-text;
+    margin: 0 auto;
+    max-width: 530px;
+    text-align: center;
+}
+.btn{
+    background: $primary;
+    border-radius: 35px;
+    color: #fff;
+    padding: 16px 62px;
+    display: inline-block;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+}
+.sociaty{
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    --icon-color: #{$white};
+    &__link{
+        font-size: 32px;
+        line-height: 32px;
+        color: var(--icon-color);
+        &-icon{
+            
+        }
+    }
+    
+}

@@ -1,0 +1,34 @@
+.start{
+    position: relative;
+    padding: 270px 0 240px;
+    text-align: center;
+    &__background{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: url('../images/design/background.webp') no-repeat center center / cover;
+        z-index: -1;
+        clip-path: polygon(0% 0%, 100% 0%, 100% 79%, 50% 100%, 0% 79%);
+        filter: brightness(40%);
+        -webkit-filter: brightness(40%);
+    }
+    &__title{
+        font-weight: bold;
+        font-size: 74px;
+        line-height: 84px;
+        letter-spacing: 0.2px;
+        color: $light-text;
+        max-width: 670px;
+        margin: 0 auto 30px;
+    }
+    &__sub-title{
+        color: $light-text;
+        width: 765px;
+        margin: 0 auto 90px;
+    }
+    &__btn{
+        
+    }
+}
