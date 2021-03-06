@@ -9,6 +9,7 @@ class Player{
             nav : `${option}__nav`,
             
             play : `${option}-controls__play`,
+            centerButton : `${option}__center-btn`,
             screen : `${option}-controls__screen`,
             
             progressBar : `${option}-progress-bar`,
@@ -36,6 +37,9 @@ class Player{
             nav : document.querySelector(`.${this.navigationClassName.nav}`),
             
             play : document.querySelector(`.${this.navigationClassName.play}`),
+            
+            centerButton : document.querySelector(`.${this.navigationClassName.centerButton}`),
+            
             screen : document.querySelector(`.${this.navigationClassName.screen}`),
             
             progressBar : document.querySelector(`.${this.navigationClassName.progressBar}`),
@@ -85,7 +89,9 @@ class Player{
         
         /* слушаем нажатие на кнопки   */
         this.selector.player.addEventListener('click', (e) =>{
-            if (this.navigation.settingMenu.classList.contains(`${this.navigationClassName.settingMenu}_active`)) {
+            
+            if (e.target != this.navigation.setting){
+                
                 this.navigation.settingMenu.classList.remove(`${this.navigationClassName.settingMenu}_active`);
             }
             
@@ -98,6 +104,10 @@ class Player{
                     this.play();
                     break;
                     
+                case this.navigation.centerButton:
+                    this.play();
+                    break;
+                    
                 case this.navigation.screen:
                     this.screen();
                     break;
@@ -107,9 +117,8 @@ class Player{
                     
                     break;
                 case this.navigation.setting:
-                    if (!this.navigation.settingMenu.classList.contains(`${this.navigationClassName.settingMenu}_active`)) {
-                        this.navigation.settingMenu.classList.add(`${this.navigationClassName.settingMenu}_active`);
-                    }
+                    
+                    this.navigation.settingMenu.classList.toggle(`${this.navigationClassName.settingMenu}_active`);
                     
                     break;
                     
@@ -185,20 +194,21 @@ class Player{
         
         /* Движение курсора */
         this.selector.player.addEventListener('mousemove', () =>{
-           clearTimeout(this.timer);
-           
-            //неработает    
-            // if (!this.navigation.nav.contains(`${this.navigationClassName.nav}_class`)) {
-            //     this.navigation.nav.add(`${this.navigationClassName.nav}_class`);
+            clearTimeout(this.timer);
+            if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
+                this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
+                this.player.style.cursor = 'auto';
                 
-            // }
-            // if (!this.selector.video.paused && this.navigation.nav.contains(`${this.navigationClassName.nav}_class`)) {
+            }
+            if (!this.selector.video.paused && this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
                 
-            //     this.timer = setTimeout(() => {
+                this.timer = setTimeout(() => {
                     
-            //         this.navigation.nav.remove(`${this.navigationClassName.nav}_class`);
-            //     }, 2000);
-            // }
+                    this.navigation.nav.classList.remove(`${this.navigationClassName.nav}_active`);
+                    
+                    this.player.style.cursor = 'none';
+                }, 2000);
+            }
             
             
         });
@@ -208,6 +218,12 @@ class Player{
         this.volumeBar();
     }
     play(){
+        if (!this.videoAlready) {
+            this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
+            this.navigation.centerButton.style.display = 'none';
+        }
+        
+        
         this.videoAlready = true;
        if (this.selector.video.paused) {
             this.selector.video.play();

@@ -6634,6 +6634,25 @@ img {
   padding: 0;
 }
 
+.player__center-btn {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  background: #2091F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.4s;
+  font-size: 45px;
+  color: #FFFFFF;
+}
+
+.player__center-btn:hover {
+  transform: scale(1.2);
+}
+
 .player__video {
   width: 100%;
 }
@@ -6671,9 +6690,9 @@ img {
 }
 
 .player-controls__btn {
-  width: 30px;
+  width: 20px;
   display: inline-block;
-  font-size: 30px;
+  font-size: 20px;
   color: #fff;
   background: none;
   border: none;
