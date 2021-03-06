@@ -6677,7 +6677,7 @@ img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding: 10px;
+  padding: 15px 10px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -8291,7 +8291,7 @@ img {
   }
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   .player-controls__volume-bar {
     display: none;
   }

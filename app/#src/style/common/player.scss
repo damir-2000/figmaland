@@ -50,7 +50,7 @@
     &-controls{
         user-select:none;
         
-        padding: 10px;
+        padding: 15px 10px 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -91,7 +91,7 @@
                 height: 7px;
                 background: rgba(0, 0, 0, 0.472);
                 z-index: 100;
-                @include respond(mobile){
+                @include respond(tablet){
                     display: none;
                 }
                &-progress{
