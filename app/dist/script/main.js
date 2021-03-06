@@ -190,6 +190,7 @@ class Player{
         this.selector.player.addEventListener('mousemove', () =>{
            clearTimeout(this.timer);
            
+            //неработает    
             // if (!this.navigation.nav.contains(`${this.navigationClassName.nav}_class`)) {
             //     this.navigation.nav.add(`${this.navigationClassName.nav}_class`);
                 
