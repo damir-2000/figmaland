@@ -6,9 +6,29 @@
     &__sub-title{
         margin-bottom: 90px;
     }
-    &__brands{
+    &-brands{
         margin-bottom: 80px;
-        
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        &__brand{
+            border: 1px solid #D8D8D8;
+            padding: 25px 40px;
+            flex: 1;
+            height: 172px;
+        }
+        &__text{
+            font-size: 16px;
+            line-height: 23px;
+            letter-spacing: 0.1px;
+            color: $second-text;
+            margin-bottom: 15px;
+        }
+        &__img{
+            
+        }
     }
     &__btn-wrapper{
         text-align: center;

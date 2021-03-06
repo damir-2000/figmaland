@@ -1,3 +1,52 @@
 .header{
- 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding-top: 50px;
+    z-index: 99;
+}
+.navbar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__logo{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%,-50%,0);
+        @include respond(desktop){
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: translate3d(0%,0%,0);
+        }
+    }
+    &__sidebar{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+    }
+    &-menu{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 437px;
+        width: 100%;
+        margin: 0 10px;
+        &__item{
+            margin: 0 15px;
+            @include respond(notebook){
+                margin: 0 0px;
+            }
+        }
+        &__link{
+            font-size: 15px;
+            line-height: 28px;
+            letter-spacing: 0.2px;
+            color: $white;
+        }
+    }
 }

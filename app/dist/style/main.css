@@ -6636,8 +6636,8 @@ img {
 
 .player__center-btn {
   position: absolute;
-  width: 190px;
-  height: 190px;
+  width: 185px;
+  height: 185px;
   background: #2091F9;
   display: flex;
   align-items: center;
@@ -6883,6 +6883,56 @@ img {
   color: var(--icon-color);
 }
 
+.header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding-top: 50px;
+  z-index: 99;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar__logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.navbar__sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 437px;
+  width: 100%;
+  margin: 0 10px;
+}
+
+.navbar-menu__item {
+  margin: 0 15px;
+}
+
+.navbar-menu__link {
+  font-size: 15px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  color: #FFFFFF;
+}
+
 .start {
   position: relative;
   padding: 270px 0 240px;
@@ -7042,8 +7092,28 @@ img {
   margin-bottom: 90px;
 }
 
-.partners__brands {
+.partners-brands {
   margin-bottom: 80px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.partners-brands__brand {
+  border: 1px solid #D8D8D8;
+  padding: 25px 40px;
+  flex: 1;
+  height: 172px;
+}
+
+.partners-brands__text {
+  font-size: 16px;
+  line-height: 23px;
+  letter-spacing: 0.1px;
+  color: #374754;
+  margin-bottom: 15px;
 }
 
 .partners__btn-wrapper {
@@ -7124,6 +7194,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   height: 704px;
 }
 
@@ -8288,6 +8359,21 @@ img {
 
   .offset-xl-11 {
     margin-left: 91.66667%;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .navbar__logo {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: translate3d(0%, 0%, 0);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbar-menu__item {
+    margin: 0 0px;
   }
 }
 
