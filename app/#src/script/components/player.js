@@ -282,30 +282,38 @@ class Player{
     
     progressBar(){
         let context = this;
-        this.navigation.progressBar.addEventListener('mousedown', (e) =>{
-            this.videoScroll = true;
-            
-            this.selector.video.currentTime = ((e.clientX-this.navigation.progressBar.getBoundingClientRect().x) / this.navigation.progressBar.offsetWidth * this.selector.video.duration);
-            
-            this.navigation.progressTime.style.width = `${(e.clientX-this.navigation.progressBar.getBoundingClientRect().x) / this.navigation.progressBar.offsetWidth * 100}%`;
-            
-            this.selector.player.addEventListener('mousemove', progressMove);
-            this.selector.player.addEventListener('mouseup', progressEnd);
-            this.selector.player.addEventListener('mouseleave', progressEnd);
+        this.navigation.progressBar.addEventListener('mousedown', progreesStart);
+        this.navigation.progressBar.addEventListener('touchstart', progreesStart);
             
             
+        function progreesStart(e) {
+            context.videoScroll = true;
+        
+            context.selector.video.currentTime = (((e.clientX || e.changedTouches[0].clientX)-context.navigation.progressBar.getBoundingClientRect().x) / context.navigation.progressBar.offsetWidth * context.selector.video.duration);
             
-        })
+            context.navigation.progressTime.style.width = `${((e.clientX || e.changedTouches[0].clientX)-context.navigation.progressBar.getBoundingClientRect().x) / context.navigation.progressBar.offsetWidth * 100}%`;
+            
+            context.selector.player.addEventListener('mousemove', progressMove);
+            context.selector.player.addEventListener('mouseup', progressEnd);
+            context.selector.player.addEventListener('mouseleave', progressEnd);
+            context.selector.player.addEventListener('touchmove', progressMove);
+            context.selector.player.addEventListener('touchend', progressEnd);
+            context.selector.player.addEventListener('touchcancel', progressEnd);
+        }
+        
         function progressMove(e) {
-            context.selector.video.currentTime = ((e.clientX-context.navigation.progressBar.getBoundingClientRect().x) / context.navigation.progressBar.offsetWidth * context.selector.video.duration);
+            context.selector.video.currentTime = (((e.clientX || e.changedTouches[0].clientX)-context.navigation.progressBar.getBoundingClientRect().x) / context.navigation.progressBar.offsetWidth * context.selector.video.duration);
             
-            context.navigation.progressTime.style.width = `${(e.clientX-context.navigation.progressBar.getBoundingClientRect().x) / context.navigation.progressBar.offsetWidth * 100}%`;
+            context.navigation.progressTime.style.width = `${((e.clientX || e.changedTouches[0].clientX)-context.navigation.progressBar.getBoundingClientRect().x) / context.navigation.progressBar.offsetWidth * 100}%`;
         }
         function progressEnd() {
             context.videoScroll = false;
             context.selector.player.removeEventListener('mousemove', progressMove);
             context.selector.player.removeEventListener('mouseup', progressEnd);
             context.selector.player.removeEventListener('mouseleave', progressEnd);
+            context.selector.player.removeEventListener('touchmove', progressMove);
+            context.selector.player.removeEventListener('touchend', progressEnd);
+            context.selector.player.removeEventListener('touchcancel', progressEnd);
         }
         
         

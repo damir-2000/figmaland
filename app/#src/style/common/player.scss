@@ -80,17 +80,20 @@
             display: flex;
             align-items: center;
             margin-right: 10px;
-            &:hover &-bar{
-                display: block;
-            }
+            // &:hover &-bar{
+            //     display: block;
+            // }
             &-bar{
                 display: block;
                 position: relative;
                 user-select:none;
-                width: 100px;
+                width: 80px;
                 height: 7px;
                 background: rgba(0, 0, 0, 0.472);
                 z-index: 100;
+                @include respond(mobile){
+                    display: none;
+                }
                &-progress{
                     position: absolute;
                     left: 0;
@@ -141,18 +144,18 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 120px;
+        width: 100px;
         &__curent{
-          width: 50px;
+          width: 40px;
         }
         &__duration{
-            width: 50px;
+            width: 40px;
         }
         span{
             user-select:none;
             display: inline-block;
             color: #fff;
-            font-size: 20px;
+            font-size: 16px;
         }
     }
     &-progress-bar{
