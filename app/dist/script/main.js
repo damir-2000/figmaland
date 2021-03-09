@@ -215,7 +215,7 @@ class Player{
             
             
         });
-        this.selector.player.addEventListener('touchmove', () =>{
+        this.selector.player.addEventListener('touch', () =>{
             clearTimeout(this.timer);
             if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
                 this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
