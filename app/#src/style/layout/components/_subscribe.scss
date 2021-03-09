@@ -1,10 +1,35 @@
 .subscribe{
     padding: 160px 0 50px;
+    @include respond(notebook){
+        text-align: center;
+    }
+    @include respond(notebook){
+        padding: 130px 0 100px;
+    }
+    @include respond(tablet){
+        padding: 80px 0 100px;
+    }
     &__row{}
     &__col{
+        &-title{
+            margin-bottom: 35px;
+            
+        }
+        
         &-left{}
         &-right{
             padding-top: 70px;
+            @include respond(notebook){
+                padding-top: 95px;
+            }
+            @include media(400px){
+                padding-top: 45px;
+            }
+        }
+    }
+    &__img{
+        @include respond(desktop){
+            width: 100%;
         }
     }
     &__top-title{
@@ -17,7 +42,10 @@
     }
     &__title{
         text-align: left;
-        margin-bottom: 35px;
+        
+        @include respond(notebook){
+            text-align: center;
+        }
     }
     &-form{
         &__title{
@@ -37,7 +65,12 @@
         &__wrapper{
             display: flex;
             align-items: center;
-            
+            @include respond(notebook){
+                justify-content: center;
+            }
+            @include respond(mobile){
+                flex-wrap: wrap;
+            }
         }
         &__input{
             display: inline-block;
@@ -45,13 +78,25 @@
             padding: 19px 38px;
             border: 1px solid #E8E8E8;
             border-radius: 39px;
+            @include respond(mobile){
+                width: 100%;
+                margin-bottom: 12px;
+            }
 
         }
         &__btn{
-            padding: 19px 38px;
+            padding: 19px 38px !important;
             font-weight: 400;
             margin-left: 12px;
-            
+            @include respond(mobile){
+                margin: 0;
+                width: 100%;
+                
+            }
         }
     }
 }
+@include respond(desktop){}
+@include respond(notebook){}
+@include respond(tablet){}
+@include respond(mobile){}

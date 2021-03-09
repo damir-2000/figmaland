@@ -1,29 +1,73 @@
 .fastest{
     padding: 290px 0 280px;
+    @include respond(desktop){
+        padding: 250px 0;
+    }
+    @include respond(notebook){
+        text-align: center;
+        padding: 220px 0;
+    }
+    @include respond(tablet){
+        padding: 150px 0;
+    }
+    @include respond(mobile){
+        padding: 90px 0;
+    }
+    @include media(400px){
+        padding: 50px 0;
+    }
+    
+    
     &__row{
         
     }
     &__col{
         &-left{
-            
+            @include respond(notebook){
+                margin-bottom: 65px;
+            }
+            @include media(400px){
+                margin-bottom: 35px;
+            }
         }
         &-right{
-            
+            @include respond(desktop){
+                padding-top: 50px;
+            }
+            @include respond(notebook){
+                padding-top: 30px;
+            }
+            @include respond(tablet){
+                padding-top: 0px;
+            }
         }
     }
     &__title{
         max-width: 335px;
         text-align: left;
+        @include respond(notebook){
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+        }
     }
     &__sub-title{
         text-align: left;
         margin-bottom: 70px;
+        @include respond(desktop){
+            margin-bottom: 30px;
+        }
+        @include respond(notebook){
+            text-align: center;
+        }
     }
     
     &__btn{
-        
+        margin: 0 auto;
     }
     &__img{
-        
+        @include respond(desktop){
+            width: 100%;
+        }
     }
 }

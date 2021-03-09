@@ -2,6 +2,15 @@
     position: relative;
     padding: 270px 0 240px;
     text-align: center;
+    @include respond(desktop){
+        padding: 250px 0 240px;
+    }
+    @include respond(tablet){
+        padding: 200px 0 230px;
+    }
+    @include media(400px){
+        padding: 100px 0 120px;
+    }
     &__background{
         position: absolute;
         width: 100%;
@@ -13,6 +22,12 @@
         clip-path: polygon(0% 0%, 100% 0%, 100% 79%, 50% 100%, 0% 79%);
         filter: brightness(40%);
         -webkit-filter: brightness(40%);
+        @include respond(desktop){
+            clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+        }
+        @include media(400px){
+            clip-path: polygon(0% 0%, 100% 0%, 100% 87%, 50% 100%, 0% 87%);
+        }
     }
     &__title{
         font-weight: bold;
@@ -22,13 +37,33 @@
         color: $light-text;
         max-width: 670px;
         margin: 0 auto 30px;
+        @include respond(tablet){
+            font-size: 60px;
+            line-height: 64px;
+        }
+        @include respond(mobile){
+            font-size: 48px;
+            line-height: 50px;
+            font-weight: 400;
+        }
+        @include media(400px){
+            font-size: 40px;
+            line-height: 45px;
+            margin-bottom: 20px;
+        }
     }
     &__sub-title{
         color: $light-text;
-        width: 765px;
+        max-width: 765px;
         margin: 0 auto 90px;
+        @include respond(tablet){
+            margin: 0 auto 70px;
+        }
+        @include media(400px){
+            margin-bottom: 40px;
+        }
     }
     &__btn{
-        
+        font-weight: 400;
     }
 }
