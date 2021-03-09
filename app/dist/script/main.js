@@ -215,25 +215,7 @@ class Player{
             
             
         });
-        this.selector.player.addEventListener('touchstart', () =>{
-            clearTimeout(this.timer);
-            if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
-                this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
-                this.player.style.cursor = 'auto';
-                
-            }
-            if (!this.selector.video.paused && this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
-                
-                this.timer = setTimeout(() => {
-                    
-                    this.navigation.nav.classList.remove(`${this.navigationClassName.nav}_active`);
-                    
-                    this.player.style.cursor = 'none';
-                }, 2000);
-            }
-            
-            
-        });
+
         
         
         this.progressBar();
