@@ -1,10 +1,25 @@
 .partners{
     padding: 130px 0 80px;
+    @include respond(desktop){
+        padding: 100px 0 70px;
+    }
+    @include respond(notebook){
+        padding: 80px 0 60px;
+    }
+    @include respond(tablet){
+        padding: 70px 0 60px;
+    }
+    @include respond(mobile){
+        padding: 60px 0 50px;
+    }
     &__title{
-        
+         
     }
     &__sub-title{
         margin-bottom: 90px;
+        @include media(400px){
+            margin-bottom:50px;
+        }
     }
     &-brands{
         margin-bottom: 80px;
@@ -13,11 +28,23 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        @include media(400px){
+            margin-bottom: 50px;
+        }
         &__brand{
             border: 1px solid #D8D8D8;
             padding: 25px 40px;
             flex: 1;
             height: 172px;
+            @include respond(mobile){
+                margin-bottom: 30px; 
+            }
+            @include media(400px){
+                height: auto;
+                width: 100%;
+                padding: 25px 10px;
+                margin-bottom: 10px; 
+            }
         }
         &__text{
             font-size: 16px;

@@ -1,11 +1,33 @@
 .footer{
     padding: 160px 0 150px;
     background: $dark-background;
+    @include respond(tablet){
+        padding: 110px 0 50px;
+    }
+    @include respond(mobile){
+        text-align: center;
+        
+    }
+    @include media(400px){
+        padding: 60px 0;
+    }
     &__row{
         justify-content: flex-end;
     }
     
     &-col{
+        @include respond(tablet){
+            margin-bottom: 80px;
+        }
+        @include respond(mobile){
+           
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        @include media(400px){
+            margin-bottom: 40px;
+        }
        &__title{
         font-weight: bold;
         font-size: 20px;
@@ -18,6 +40,9 @@
            
             &-item{
                 margin-bottom: 16px;
+                @include media(400px){
+                    margin-bottom: 7px;
+                }
             }
             &-link{
                 font-size: 15px;
@@ -36,6 +61,11 @@
         align-items: center;
         margin-bottom: 20px;
         color: $white;
+        @include respond(mobile){
+            max-width: 280px;
+            width: 100%;
+            text-align: left;
+        }
         &-icon{
            font-size: 38px;
            margin-right: 15px;

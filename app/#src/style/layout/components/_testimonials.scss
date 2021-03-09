@@ -1,5 +1,9 @@
 .testimonials{
     padding: 110px 0 100px;
+ 
+    @include respond(mobile){
+        padding: 100px 0;
+    }
     &__title{
         margin-bottom: 50px;
     }
@@ -11,6 +15,10 @@
     &-review{
         &__logo{
             margin-bottom: 60px;
+            @include respond(mobile){
+                margin-bottom: 50px;
+                width: 125px;
+            }
         }
         &__text{
             font-size: 28px;
@@ -19,6 +27,13 @@
             color: $second-text;
             max-width: 960px;
             margin: 0 auto 62px;
+            @include respond(mobile){
+                font-size: 14px;
+                line-height: 17px;
+                font-weight: bold;
+                max-width: 300px;
+                margin-bottom: 50px;
+            }
         }
         &__people{
             display: flex;
@@ -35,12 +50,20 @@
                     line-height: 23px;
                     letter-spacing: 0.1px;
                     color: $second-text;
+                    @include respond(mobile){
+                        font-size: 12px;
+                        line-height: 15px;
+                    }
                 }
                 &-prof{
                     font-size: 15px;
                     line-height: 28px;
                     letter-spacing: 0.2px;
                     color: $text;
+                    @include respond(mobile){
+                        font-size: 13px;
+                        line-height: 20px;
+                    }
                 }
             }
         }

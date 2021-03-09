@@ -1,6 +1,9 @@
 .pricing{
     background: $dark-background;
     padding: 110px 0 100px;
+    @include respond(tablet){
+        padding: 100px 0 90px;
+    }
     &__title{
         color: $light-text;
     }
@@ -37,12 +40,19 @@
         @include respond(desktop){
             margin-bottom: 50px;
         }
+        @include media(400px){
+            width: 100%;
+            padding: 30px;
+        }
         &:hover{
             padding: 80px 40px;
             --card-main-color: #{$primary};
             --card-second-color: #{$white};
             --card-text-color: #{$white};
             --card-second-text-color: #{$white};
+            @include respond(tablet){
+                padding: 40px;
+            }
         }
         &__title{
             text-transform: uppercase;
@@ -70,6 +80,9 @@
             color: var(--card-text-color);
             margin-bottom: 30px;
             transition: 0.4s;
+            @include media(400px){
+                margin-bottom: 20px;
+            }
             &-number{
                 font-weight: bold;
                 font-size: 74px;
@@ -106,6 +119,10 @@
                 letter-spacing: 0.2px;
                 color: var(--card-text-color);
                 transition: 0.4s;
+                @include media(400px){
+                    margin: 7px 0;
+                    line-height: 25px;
+                }
             }
         }
         &__btn{
@@ -117,3 +134,4 @@
         }
     }
 }
+
