@@ -246,10 +246,8 @@ class Player{
         });
         
         this.selector.video.addEventListener('waiting', () =>{
-            console.log('ff');
+            this.navigation.loader.classList.add(`${this.navigationClassName.loader}_active`);
                 
-            
-            
         });
         
         
