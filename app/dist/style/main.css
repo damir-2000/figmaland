@@ -6660,6 +6660,7 @@ img {
   transition: 0.4s;
   font-size: 45px;
   color: #FFFFFF;
+  z-index: 10;
 }
 
 .player__center-btn:hover {

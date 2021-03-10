@@ -22,6 +22,7 @@
         transition: 0.4s;
         font-size: 45px;
         color: $white;
+        z-index: 10;
         &:hover{
             transform: scale(1.2);
         }
