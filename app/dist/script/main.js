@@ -246,15 +246,15 @@ class Player{
         });
         
         this.selector.video.addEventListener('waiting', () =>{
-            console.log(this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`));
+            this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`);
                 
         });
         this.selector.video.addEventListener('error', () =>{
-            console.log(this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`));
+            this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`);
                 
         });
-        this.selector.video.addEventListener('canplay', () =>{
-            console.log(this.navigation.videoLoader.classList.remove(`${this.navigationClassName.videoLoader}_active`));
+        this.selector.video.addEventListener('canplaythrough', () =>{
+            this.navigation.videoLoader.classList.remove(`${this.navigationClassName.videoLoader}_active`);
                 
         });
         
