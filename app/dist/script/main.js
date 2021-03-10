@@ -245,7 +245,7 @@ class Player{
             
         });
         
-        this.selector.video.addEventListener('abort', () =>{
+        this.selector.video.addEventListener('stalled', () =>{
             console.log('ff');
                 
             
