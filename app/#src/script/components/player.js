@@ -29,10 +29,11 @@ class Player{
             
             setting:`${option}-controls__setting`,
             settingMenu:`${option}-controls__setting-menu`,
-            
             videoSpeed:`${option}__speed`,
+            
+            loader:`${option}__loader`,
         }
-        
+         
         this.navigation = {
             nav : document.querySelector(`.${this.navigationClassName.nav}`),
             
@@ -60,6 +61,8 @@ class Player{
             setting : document.querySelector(`.${this.navigationClassName.setting}`),
             settingMenu : document.querySelector(`.${this.navigationClassName.settingMenu}`),
             videoSpeed : document.querySelectorAll(`.${this.navigationClassName.videoSpeed}`),
+            
+            loader : document.querySelectorAll(`.${this.navigationClassName.loader}`),
             
         }
         
@@ -183,6 +186,15 @@ class Player{
             
         });
         
+        this.selector.video.addEventListener('abort', () =>{
+            console.log('ff');
+                
+            
+            
+        });
+        
+        
+        
         /* конец видео */
         this.selector.video.addEventListener('ended', () =>{
             this.selector.video.currentTime = 0;
@@ -197,7 +209,8 @@ class Player{
             clearTimeout(this.timer);
             if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
                 this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
-                this.player.style.cursor = 'auto';
+                
+                this.selector.player.style.cursor = 'auto';
                 
             }
             if (!this.selector.video.paused && this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
@@ -206,13 +219,13 @@ class Player{
                     
                     this.navigation.nav.classList.remove(`${this.navigationClassName.nav}_active`);
                     
-                    this.player.style.cursor = 'none';
+                    this.selector.player.style.cursor = 'none';
                 }, 2000);
             }
             
             
         });
-
+        
         
         
         this.progressBar();

@@ -1,7 +1,7 @@
-document.querySelector('.nav__burger').addEventListener('click', function () {
-    this.classList.toggle('nav__burger_active');
-    document.querySelector('.nav__sidebar-wrapper').classList.toggle('nav__sidebar-wrapper_active');
-    document.querySelector('.nav').classList.toggle('nav_active');
+document.querySelector('.navbar__burger').addEventListener('click', function () {
+    this.classList.toggle('navbar__burger_active');
+    document.querySelector('.navbar__sidebar').classList.toggle('navbar__sidebar_active');
+    document.querySelector('.navbar').classList.toggle('navbar_active');
     document.querySelector('body').classList.toggle('inactive');
     
 });
@@ -13,7 +13,7 @@ let navbarActive = false;
 let speed = 300;
 window.addEventListener('scroll', function(e) {
     
-    let topSectionHeight = document.querySelector('.discover').offsetHeight;
+    let topSectionHeight = document.querySelector('.start').offsetHeight;
     if (window.scrollY > topSectionHeight - navbar.offsetHeight && !navbarActive) {
         navbarActive = true;
         navbar.classList.add('header_active');
@@ -29,7 +29,7 @@ window.addEventListener('scroll', function(e) {
         navbar.style.opacity = 1;
 
         
-        console.log('dd');
+        
     }
     if(window.scrollY < topSectionHeight - navbar.offsetHeight - 100 && navbarActive){
         navbarActive = false;

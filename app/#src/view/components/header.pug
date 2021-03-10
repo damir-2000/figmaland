@@ -1,5 +1,5 @@
 header.header 
-    .container
+    .header__container
         nav.navbar 
             a.navbar__logo(href="")
                 img(src="./images/content/logo.webp", alt="").navbar__logo-img
@@ -24,3 +24,8 @@ header.header
                         i.fab.fa-facebook-square.sociaty__link-icon 
                     a.sociaty__link(href="") 
                         i.fab.fa-linkedin.sociaty__link-icon 
+                        
+            button.navbar__burger
+                -for (var x = 0; x < 4; x++)
+                    span.navbar__burger-line       
+                        

@@ -1,6 +1,62 @@
 document.addEventListener('DOMContentLoaded', function() {
 // // =include components/img.js
-// // =include components/header-menu.js
+document.querySelector('.navbar__burger').addEventListener('click', function () {
+    this.classList.toggle('navbar__burger_active');
+    document.querySelector('.navbar__sidebar').classList.toggle('navbar__sidebar_active');
+    document.querySelector('.navbar').classList.toggle('navbar_active');
+    document.querySelector('body').classList.toggle('inactive');
+    
+});
+
+
+
+let navbar = document.querySelector('.header');
+let navbarActive = false;
+let speed = 300;
+window.addEventListener('scroll', function(e) {
+    
+    let topSectionHeight = document.querySelector('.start').offsetHeight;
+    if (window.scrollY > topSectionHeight - navbar.offsetHeight && !navbarActive) {
+        navbarActive = true;
+        navbar.classList.add('header_active');
+        navbar.style.opacity = 0;
+        navbar.style.position = 'fixed';
+        navbar.animate([
+            {opacity: '0'},
+            {opacity: '1'},
+        ],
+            {
+            duration: speed
+        })
+        navbar.style.opacity = 1;
+
+        
+        
+    }
+    if(window.scrollY < topSectionHeight - navbar.offsetHeight - 100 && navbarActive){
+        navbarActive = false;
+        navbar.style.opacity = 1;
+        
+        navbar.animate([
+            {opacity: '1'},
+            {opacity: '0'},
+        ],
+            {
+            duration: speed
+        })
+        setTimeout(() => {
+            navbar.style.position = 'absolute';
+            navbar.classList.remove('header_active');
+        }, speed);
+        
+        
+    }
+    
+})
+
+
+
+
 class Player{
     constructor (option){
         this.selector = {
@@ -32,10 +88,11 @@ class Player{
             
             setting:`${option}-controls__setting`,
             settingMenu:`${option}-controls__setting-menu`,
-            
             videoSpeed:`${option}__speed`,
+            
+            loader:`${option}__loader`,
         }
-        
+         
         this.navigation = {
             nav : document.querySelector(`.${this.navigationClassName.nav}`),
             
@@ -63,6 +120,8 @@ class Player{
             setting : document.querySelector(`.${this.navigationClassName.setting}`),
             settingMenu : document.querySelector(`.${this.navigationClassName.settingMenu}`),
             videoSpeed : document.querySelectorAll(`.${this.navigationClassName.videoSpeed}`),
+            
+            loader : document.querySelectorAll(`.${this.navigationClassName.loader}`),
             
         }
         
@@ -186,6 +245,15 @@ class Player{
             
         });
         
+        this.selector.video.addEventListener('abort', () =>{
+            console.log('ff');
+                
+            
+            
+        });
+        
+        
+        
         /* конец видео */
         this.selector.video.addEventListener('ended', () =>{
             this.selector.video.currentTime = 0;
@@ -200,7 +268,8 @@ class Player{
             clearTimeout(this.timer);
             if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
                 this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
-                this.player.style.cursor = 'auto';
+                
+                this.selector.player.style.cursor = 'auto';
                 
             }
             if (!this.selector.video.paused && this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
@@ -209,13 +278,13 @@ class Player{
                     
                     this.navigation.nav.classList.remove(`${this.navigationClassName.nav}_active`);
                     
-                    this.player.style.cursor = 'none';
+                    this.selector.player.style.cursor = 'none';
                 }, 2000);
             }
             
             
         });
-
+        
         
         
         this.progressBar();

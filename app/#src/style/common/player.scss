@@ -36,6 +36,13 @@
             font-size: 15px;
         }
     }
+    &__loader{
+        position: absolute;
+        display: none;
+        &_active{
+            display: block;
+        }
+    }
     &__video{
         
         

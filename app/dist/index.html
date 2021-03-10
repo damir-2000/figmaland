@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="style/main.min.css">
   </head>
   <body>
+    <header class="header"> 
+      <div class="header__container">
+        <nav class="navbar"> <a class="navbar__logo" href=""><img class="navbar__logo-img" src="./images/content/logo.webp" alt=""></a>
+          <div class="navbar__sidebar"> 
+            <ul class="navbar-menu">
+              <li class="navbar-menu__item"> <a class="navbar-menu__link" href="">Home</a></li>
+              <li class="navbar-menu__item"> <a class="navbar-menu__link" href="">Product</a></li>
+              <li class="navbar-menu__item"> <a class="navbar-menu__link" href="">Pricing</a></li>
+              <li class="navbar-menu__item"> <a class="navbar-menu__link" href="">About</a></li>
+              <li class="navbar-menu__item"> <a class="navbar-menu__link" href="">Contact</a></li>
+            </ul>
+            <div class="navbar__sociaty sociaty"> <a class="sociaty__link" href=""> <i class="fab fa-twitter sociaty__link-icon"> </i></a><a class="sociaty__link" href=""> <i class="fab fa-facebook-square sociaty__link-icon"> </i></a><a class="sociaty__link" href=""> <i class="fab fa-linkedin sociaty__link-icon"> </i></a></div>
+          </div>
+          <button class="navbar__burger"><span class="navbar__burger-line">      </span><span class="navbar__burger-line">      </span><span class="navbar__burger-line">      </span><span class="navbar__burger-line">      </span>
+          </button>
+        </nav>
+      </div>
+    </header>
     <section class="start"> 
       <div class="start__background"></div>
       <h1 class="start__title">The best products start with Figma</h1>
@@ -34,6 +52,13 @@
         <div class="features__player player">
           <video class="player__video" src="../video/video.mp4" type="video/mp4" poster="./images/content/poster.webp"></video>
           <div class="player__center-btn fas fa-play"></div>
+          <div class="player__loader line-scale-pulse-out">
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+            <div> </div>
+          </div>
           <div class="player__nav">
             <div class="player-progress-bar">
               <div class="player-progress-bar__time"></div>
