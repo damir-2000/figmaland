@@ -90,7 +90,7 @@ class Player{
             settingMenu:`${option}-controls__setting-menu`,
             videoSpeed:`${option}__speed`,
             
-            loader:`${option}__loader`,
+            videoLoader:`${option}__loader`,
         }
          
         this.navigation = {
@@ -121,7 +121,7 @@ class Player{
             settingMenu : document.querySelector(`.${this.navigationClassName.settingMenu}`),
             videoSpeed : document.querySelectorAll(`.${this.navigationClassName.videoSpeed}`),
             
-            loader : document.querySelectorAll(`.${this.navigationClassName.loader}`),
+            videoLoader : document.querySelector(`.${this.navigationClassName.videoLoader}`),
             
         }
         
@@ -246,7 +246,15 @@ class Player{
         });
         
         this.selector.video.addEventListener('waiting', () =>{
-            this.navigation.loader.classList.add(`${this.navigationClassName.loader}_active`);
+            console.log(this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`));
+                
+        });
+        this.selector.video.addEventListener('error', () =>{
+            console.log(this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`));
+                
+        });
+        this.selector.video.addEventListener('canplay', () =>{
+            console.log(this.navigation.videoLoader.classList.remove(`${this.navigationClassName.videoLoader}_active`));
                 
         });
         
