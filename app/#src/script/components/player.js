@@ -136,7 +136,7 @@ class Player{
     }
     
     start(){
-        console.log(this.mobile);
+        
         /* слушаем нажатие на кнопки   */
         this.selector.player.addEventListener('click', (e) =>{
             
@@ -223,7 +223,7 @@ class Player{
         
         /* работает при загрузке видео данных */
         this.selector.video.addEventListener('progress', () =>{
-            if (this.videoAlready) {
+            if (this.videoAlready && this.selector.video.buffered.length > 0) {
                 this.navigation.progressBuffer.style.width = `${this.selector.video.buffered.end(this.selector.video.buffered.length-1) / this.selector.video.duration * 100}%`;
                 
             }
@@ -236,7 +236,7 @@ class Player{
             this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`);
                 
         });
-        // /* запускаеться при ошибка при зашрузке данных видео данных */
+        // /* запускаеться при ошибке */
         // this.selector.video.addEventListener('error', () =>{
         //     this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`);
                 
