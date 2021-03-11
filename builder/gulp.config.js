@@ -15,7 +15,7 @@ module.exports = {
             js:             `${srcDir}/script/*.js`,
             font:           `${srcDir}/fonts/**/*.ttf`,
             iconFont:       `${srcDir}/icons/**/*.*`,
-            img:            `${srcDir}/images/**/*.{gif,jpg,jpeg,png,webp,jfif,tiff}`,
+            img:            `${srcDir}/images/**/*.{gif,jpg,jpeg,png,webp,jfif,tiff,svg}`,
             
         },
         prod: {

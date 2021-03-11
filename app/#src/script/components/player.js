@@ -27,8 +27,6 @@ class Player{
             timeCurentMin : `${option}-time__curent-minute`,
             timeCurentSec : `${option}-time__curent-sec`,
             
-            
-            
             setting:`${option}-controls__setting`,
             settingMenu:`${option}-controls__setting-menu`,
             videoSpeed:`${option}__speed`,
@@ -118,8 +116,6 @@ class Player{
             timeCurentMin : document.querySelector(`.${this.navigationClassName.timeCurentMin}`),
             timeCurentSec : document.querySelector(`.${this.navigationClassName.timeCurentSec}`),
             
-            
-            
             setting : document.querySelector(`.${this.navigationClassName.setting}`),
             settingMenu : document.querySelector(`.${this.navigationClassName.settingMenu}`),
             videoSpeed : document.querySelectorAll(`.${this.navigationClassName.videoSpeed}`),
@@ -129,7 +125,7 @@ class Player{
             
         }
         
-        this.volume = this.selector.video.volume;
+        this.volume = 1;
         
         this.videoAlready = false;
         this.videoScroll = false;
@@ -157,10 +153,8 @@ class Player{
                      
                     if (this.mobile && (this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) || !this.videoAlready)) {
                         this.play();
-                        console.log('fdsdf');
                     }
                     else if (!this.mobile){
-                        console.log('fdsdf');
                         this.play();
                     }
                 
@@ -239,11 +233,7 @@ class Player{
         this.selector.video.addEventListener('progress', () =>{
             if (this.videoAlready && this.selector.video.buffered.length > 0) {
                 this.navigation.progressBuffer.style.width = `${this.selector.video.buffered.end(this.selector.video.buffered.length-1) / this.selector.video.duration * 100}%`;
-                
-            }
-                
-            
-            
+            }  
         });
         /* запускаеться при нехватке видео данных */
         this.selector.video.addEventListener('waiting', () =>{
@@ -261,8 +251,6 @@ class Player{
                 
         });
         
-        
-        
         /* конец видео */
         this.selector.video.addEventListener('ended', () =>{
             this.selector.video.currentTime = 0;
@@ -270,7 +258,6 @@ class Player{
             this.navigation.play.classList.remove(this.iconClassName.pause);
             this.navigation.play.classList.add(this.iconClassName.play);
         });
-        
         
         /* Движение курсора */
         this.selector.player.addEventListener('mousemove', () =>{
@@ -360,8 +347,7 @@ class Player{
         let context = this;
         this.navigation.progressBar.addEventListener('mousedown', progreesStart);
         this.navigation.progressBar.addEventListener('touchstart', progreesStart);
-            
-            
+     
         function progreesStart(e) {
             context.videoScroll = true;
         
@@ -397,6 +383,12 @@ class Player{
     volumeBar(){
         let context = this;
         
+        if (!localStorage.getItem('volume')) {
+            localStorage.setItem('volume', this.volume);
+        }
+        else{
+            this.volume = localStorage.getItem('volume');
+        }
         
         function icon(lev) {
             context.navigation.mute.classList.remove(context.iconClassName.volumeUp);
@@ -416,12 +408,14 @@ class Player{
         
         icon(this.volume);
         this.navigation.volumeLevel.style.width = `${this.volume * 100}%`;
+        this.selector.video.volume = this.volume;
         
         this.navigation.volumeBar.addEventListener('mousedown', (e) =>{
             this.volume = ((e.clientX-this.navigation.volumeBar.getBoundingClientRect().x) / this.navigation.volumeBar.offsetWidth);
             
             this.navigation.volumeLevel.style.width = `${this.volume * 100}%`;
             this.selector.video.volume = this.volume;
+            localStorage.setItem('volume', this.volume);
             if (this.selector.video.muted) {
                 this.mute();
             }
@@ -452,7 +446,7 @@ class Player{
                 context.navigation.volumeLevel.style.width = `${context.volume * 100}%`;
                 icon(context.volume);
             }
-            
+            localStorage.setItem('volume', context.volume);
         }
         function progressEnd() {
             
@@ -460,8 +454,7 @@ class Player{
             context.selector.player.removeEventListener('mousemove', progressEnd);
             context.selector.player.removeEventListener('mouseleave', progressEnd);
         }
-        
-        
+   
         this.selector.video.addEventListener('wheel', (e)=>{
             if (document.fullscreenElement) {
                 this.volume = this.volume - e.deltaY / 2000;
@@ -487,6 +480,7 @@ class Player{
                 
             
             }
+            localStorage.setItem('volume', this.volume);
         });
         
     }
