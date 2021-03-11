@@ -50,6 +50,10 @@
                 letter-spacing: 0.2px;
                 color: $white;
                 font-weight: 400;
+                transition: 0.5s;
+                &:hover{
+                    color: rgb(200, 200, 200);
+                }
             }
        }
        

@@ -6900,7 +6900,7 @@ img {
 }
 
 .btn:hover {
-  background: #0072dd;
+  transform: scale(1.05);
 }
 
 .sociaty {
@@ -6909,12 +6909,19 @@ img {
   align-items: center;
   justify-content: space-between;
   --icon-color: #FFFFFF;
+  --icon-color-hover: rgb(185, 185, 185);
 }
 
 .sociaty__link {
   font-size: 32px;
   line-height: 32px;
   color: var(--icon-color);
+  transition: 0.5s;
+}
+
+.sociaty__link:hover {
+  color: var(--icon-color-hover);
+  transform: scale(1.1);
 }
 
 .header {
@@ -6978,6 +6985,11 @@ img {
   line-height: 28px;
   letter-spacing: 0.2px;
   color: #FFFFFF;
+  transition: 0.5s;
+}
+
+.navbar-menu__link:hover {
+  color: #c8c8c8;
 }
 
 .navbar__burger {
@@ -7417,7 +7429,7 @@ img {
 .pricing-card__btn {
   padding: 18px 75px;
   font-weight: 400;
-  background: var(--card-second-color);
+  background: var(--card-second-color) !important;
   color: var(--card-main-color);
   transition: 0.4s;
 }
@@ -7582,6 +7594,11 @@ img {
   letter-spacing: 0.2px;
   color: #FFFFFF;
   font-weight: 400;
+  transition: 0.5s;
+}
+
+.footer-col__list-link:hover {
+  color: #c8c8c8;
 }
 
 .footer__address,

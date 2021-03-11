@@ -43,8 +43,7 @@
         font-size: 16px;
     }
     &:hover{
-        background: $primary2;
-        
+        transform: scale(1.05);
     }
 }
 .sociaty{
@@ -53,10 +52,17 @@
     align-items: center;
     justify-content: space-between;
     --icon-color: #{$white};
+    --icon-color-hover: rgb(185, 185, 185);
+    
     &__link{
         font-size: 32px;
         line-height: 32px;
         color: var(--icon-color);
+        transition: 0.5s;
+        &:hover{
+            color: var(--icon-color-hover);
+            transform: scale(1.1);
+        }
         &-icon{
             
         }

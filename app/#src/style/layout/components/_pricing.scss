@@ -128,7 +128,7 @@
         &__btn{
             padding: 18px 75px;
             font-weight: 400;
-            background: var(--card-second-color);
+            background: var(--card-second-color) !important;
             color: var(--card-main-color);
             transition: 0.4s;
         }

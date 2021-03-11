@@ -103,6 +103,10 @@
             line-height: 28px;
             letter-spacing: 0.2px;
             color: $white;
+            transition: 0.5s;
+            &:hover{
+                color: rgb(200, 200, 200);
+            }
             @include respond(tablet){
                 font-size: 18px;
             }
