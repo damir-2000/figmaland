@@ -93,6 +93,7 @@ class Player{
             videoSpeed:`${option}__speed`,
             
             videoLoader:`${option}__loader`,
+            polygon:`${option}__polygon`,
         }
         this.iconClassName = {
             mainClass: 'fas',
@@ -109,6 +110,7 @@ class Player{
             videoLoader: 'line-scale-pulse-out'
         }
         this.selector.player.insertAdjacentHTML('beforeend', `
+            <div class="${this.navigationClassName.polygon}"></div>
             <div class="${this.navigationClassName.centerButton} ${this.iconClassName.mainClass} ${this.iconClassName.play}"></div>
             <div class="${this.navigationClassName.videoLoader} ${this.iconClassName.videoLoader}">
             <div></div><div></div><div></div><div></div><div></div>
@@ -182,6 +184,7 @@ class Player{
             videoSpeed : document.querySelectorAll(`.${this.navigationClassName.videoSpeed}`),
             
             videoLoader : document.querySelector(`.${this.navigationClassName.videoLoader}`),
+            polygon : document.querySelector(`.${this.navigationClassName.polygon}`),
             
         }
         
@@ -209,30 +212,17 @@ class Player{
                     this.play();
                     break;
                     
-                case this.selector.video:
-                    if (this.mobile) {
-                        
-                        if (this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
-                            
-                            this.play();
-                        }
-                        clearTimeout(this.timer);
-                        if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
-                            this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
-                            
-                        }
-                        if (!this.selector.video.paused && this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
-                            this.timer = setTimeout(() => {
-                                this.navigation.nav.classList.remove(`${this.navigationClassName.nav}_active`);
-                                
-                            }, 2000);
-                        }
+                case this.navigation.polygon:
+                     
+                    if (this.mobile && (this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) || !this.videoAlready)) {
+                        this.play();
+                        console.log('fdsdf');
                     }
-                    else{
+                    else if (!this.mobile){
+                        console.log('fdsdf');
                         this.play();
                     }
                 
-                    
                     break;
                     
                 case this.navigation.centerButton:
@@ -261,7 +251,9 @@ class Player{
                 
                 this.speed(e.target)
             }
-            
+            if (this.mobile) {
+                this.navigationClose();
+            }
         });
         
         /* смена полноэкранного режима */
@@ -282,7 +274,7 @@ class Player{
         });
         
         /* двойной клик для полноэкранного режима */
-        this.selector.video.addEventListener('dblclick', () =>{
+        this.navigation.polygon.addEventListener('dblclick', () =>{
             this.screen();
         });
         
@@ -341,24 +333,10 @@ class Player{
         
         /* Движение курсора */
         this.selector.player.addEventListener('mousemove', () =>{
-            clearTimeout(this.timer);
-            if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
-                this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
-                
-                this.selector.player.style.cursor = 'auto';
-                
+            if (!this.mobile) {
+                this.navigationClose();
             }
-            if (!this.selector.video.paused && this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
-                
-                this.timer = setTimeout(() => {
-                    
-                    this.navigation.nav.classList.remove(`${this.navigationClassName.nav}_active`);
-                    
-                    this.selector.player.style.cursor = 'none';
-                }, 2000);
-            }
-            
-            
+
         });
         
         if (this.mobile) {
@@ -402,7 +380,10 @@ class Player{
             document.exitFullscreen();
             
         }
-         
+        setTimeout(() => {
+            this.navigationClose();
+        }, 1000);
+        
    }
     mute(){
         this.navigation.mute.classList.remove(this.iconClassName.volumeUp);
@@ -576,6 +557,24 @@ class Player{
         btn.classList.add(`${this.navigationClassName.videoSpeed}_active`);
         
          
+    }
+    navigationClose(){
+        clearTimeout(this.timer);
+        if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
+            this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
+            
+            this.selector.player.style.cursor = 'auto';
+            
+        }
+        if (!this.selector.video.paused && this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && document.fullscreenElement) {
+            
+            this.timer = setTimeout(() => {
+                
+                this.navigation.nav.classList.remove(`${this.navigationClassName.nav}_active`);
+                
+                this.selector.player.style.cursor = 'none';
+            }, 3000);
+        }
     }
 }
 

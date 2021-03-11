@@ -6647,6 +6647,12 @@ img {
   padding: 0;
 }
 
+.player__polygon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 .player__center-btn {
   position: absolute;
   width: 185px;
