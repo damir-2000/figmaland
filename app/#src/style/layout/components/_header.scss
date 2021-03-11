@@ -119,10 +119,10 @@
         @include respond(tablet){
             display: block;
         }
-        @include respond(mobile){
-            height: 25px;
-            width: 23px;
-        }
+        // @include respond(mobile){
+        //     height: 25px;
+        //     width: 23px;
+        // }
         &-line{
             position: absolute;
             right: 0;

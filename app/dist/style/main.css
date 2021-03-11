@@ -6890,6 +6890,11 @@ img {
   font-weight: 700;
   font-size: 20px;
   cursor: pointer;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  background: #0072dd;
 }
 
 .sociaty {
@@ -7303,7 +7308,7 @@ img {
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  height: 704px;
+  height: 710px;
 }
 
 .pricing-card {
@@ -8789,11 +8794,6 @@ img {
 
   .header_active {
     padding: 5px 0;
-  }
-
-  .navbar__burger {
-    height: 25px;
-    width: 23px;
   }
 
   .start__title {

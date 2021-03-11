@@ -1,12 +1,14 @@
 class Player{
     constructor (option){
+        document.querySelector(`.${option} video`).classList.add(`${option}__video`);
         this.selector = {
             player: document.querySelector(`.${option}`),
             video: document.querySelector(`.${option}__video`),
-            playerControls: document.querySelector(`.${option}-controls`),
+            
         }
         this.navigationClassName = {
             nav : `${option}__nav`,
+            playerControls: `${option}-controls`,
             
             play : `${option}-controls__play`,
             centerButton : `${option}__center-btn`,
@@ -33,7 +35,65 @@ class Player{
             
             videoLoader:`${option}__loader`,
         }
-         
+        this.iconClassName = {
+            mainClass: 'fas',
+            play: 'fa-play',
+            pause: 'fa-pause',
+            setting: 'fa-cog',
+            fullScreen: 'fa-expand',
+            smallScreen: 'fa-compress',
+            
+            volumeUp: 'fa-volume-up',
+            volumeDown: 'fa-volume-down',
+            volumeOff: 'fa-volume-off',
+            volumeMute: 'fa-volume-mute',
+            videoLoader: 'line-scale-pulse-out'
+        }
+        this.selector.player.insertAdjacentHTML('beforeend', `
+            <div class="${this.navigationClassName.centerButton} ${this.iconClassName.mainClass} ${this.iconClassName.play}"></div>
+            <div class="${this.navigationClassName.videoLoader} ${this.iconClassName.videoLoader}">
+            <div></div><div></div><div></div><div></div><div></div>
+            </div>
+            <div class="${this.navigationClassName.nav}">
+            <div class="${this.navigationClassName.progressBar}">
+                <div class="${this.navigationClassName.progressTime}"></div>
+                <div class="${this.navigationClassName.progressBuffer}"></div>
+            </div>
+            <div class="${this.navigationClassName.playerControls}">
+                <div class="${this.navigationClassName.playerControls}__left">
+                    <button class="${this.iconClassName.mainClass} ${this.iconClassName.play} ${this.navigationClassName.playerControls}__btn ${this.navigationClassName.play}"></button>
+                    <div class="${this.navigationClassName.playerControls}__volume">
+                        <div class="${this.navigationClassName.playerControls}__btn ${this.navigationClassName.mute} ${this.iconClassName.mainClass} ${this.iconClassName.volumeUp}"></div>
+                        <div class="${this.navigationClassName.volumeBar}">
+                        <div class="${this.navigationClassName.volumeLevel}"></div>
+                        </div>
+                    </div>
+                    <div class="${option}-time">
+                        <span class="${option}-time__curent"><span class="${this.navigationClassName.timeCurentMin}">0</span><span>:</span><span class="${this.navigationClassName.timeCurentSec}">00</span></span>
+                        <span>/  </span>
+                        <span class="${option}-time__duration"><span class="${this.navigationClassName.timeDurationMin}">0</span><span>:</span><span class="${this.navigationClassName.timeDurationSec}">00</span></span>
+                    </div>
+                </div>
+                <div class="${this.navigationClassName.playerControls}__right">
+                <button class="${this.iconClassName.mainClass} ${this.iconClassName.setting} ${this.navigationClassName.playerControls}__btn ${this.navigationClassName.setting}"></button>
+                <button class="${this.iconClassName.mainClass} ${this.iconClassName.fullScreen} ${this.navigationClassName.playerControls}__btn ${this.navigationClassName.screen}"></button>
+                <div class="${this.navigationClassName.settingMenu}">
+                    <h5 class="${this.navigationClassName.settingMenu}-title">Скорость</h5>
+                    <ul class="${this.navigationClassName.settingMenu}-speed">
+                    <li class="${this.navigationClassName.videoSpeed}" speed="2">2</li>
+                    <li class="${this.navigationClassName.videoSpeed}" speed="1.5">1.5</li>
+                    <li class="${this.navigationClassName.videoSpeed}" speed="1.25">1.25</li>
+                    <li class="${this.navigationClassName.videoSpeed} ${this.navigationClassName.videoSpeed}_active" speed="1">Обычная</li>
+                    <li class="${this.navigationClassName.videoSpeed}" speed="0.75">0.75</li>
+                    <li class="${this.navigationClassName.videoSpeed}" speed="0.5">0.5</li>
+                    <li class="${this.navigationClassName.videoSpeed}" speed="0.25">0.25</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            </div>
+        `);
+        
         this.navigation = {
             nav : document.querySelector(`.${this.navigationClassName.nav}`),
             
@@ -66,30 +126,17 @@ class Player{
             
         }
         
-        this.iconClassName = {
-            mainClass: 'fas',
-            play: 'fa-play',
-            pause: 'fa-pause',
-            setting: 'fa-cog',
-            fullScreen: 'fa-expand',
-            smallScreen: 'fa-compress',
-            
-            volumeUp: 'fa-volume-up',
-            volumeDown: 'fa-volume-down',
-            volumeOff: 'fa-volume-off',
-            volumeMute: 'fa-volume-mute',
-        }
         this.volume = this.selector.video.volume;
         
         this.videoAlready = false;
         this.videoScroll = false;
         this.timer;
-        
+        this.mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent);
         this.start();
     }
     
     start(){
-        
+        console.log(this.mobile);
         /* слушаем нажатие на кнопки   */
         this.selector.player.addEventListener('click', (e) =>{
             
@@ -164,7 +211,6 @@ class Player{
                 this.navigation.progressTime.style.width = `${this.selector.video.currentTime / this.selector.video.duration * 100}%`;
             }
             
-
             this.navigation.progressBuffer.style.width = `${this.selector.video.buffered.end(this.selector.video.buffered.length-1) / this.selector.video.duration * 100}%`;
             
             this.navigation.timeCurentMin.innerHTML = Math.floor(this.selector.video.currentTime / 60);
@@ -185,15 +231,17 @@ class Player{
             
             
         });
-        
+        /* запускаеться при нехватке видео данных */
         this.selector.video.addEventListener('waiting', () =>{
             this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`);
                 
         });
-        this.selector.video.addEventListener('error', () =>{
-            this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`);
+        // /* запускаеться при ошибка при зашрузке данных видео данных */
+        // this.selector.video.addEventListener('error', () =>{
+        //     this.navigation.videoLoader.classList.add(`${this.navigationClassName.videoLoader}_active`);
                 
-        });
+        // });
+        /* запускаеться когда загружено достаточно видео данных  чтоб продолжит*/
         this.selector.video.addEventListener('canplaythrough', () =>{
             this.navigation.videoLoader.classList.remove(`${this.navigationClassName.videoLoader}_active`);
                 
@@ -232,10 +280,15 @@ class Player{
             
         });
         
-        
+        if (this.mobile) {
+            this.navigation.volumeBar.style.display = 'none';
+        }
+        else{
+            this.volumeBar();
+        }
         
         this.progressBar();
-        this.volumeBar();
+        
     }
     play(){
         if (!this.videoAlready) {
@@ -449,4 +502,5 @@ class Player{
 
 
 const features__player = new Player("player");
+
 
