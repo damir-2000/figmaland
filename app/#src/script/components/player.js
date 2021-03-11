@@ -151,7 +151,29 @@ class Player{
                     break;
                     
                 case this.selector.video:
-                    this.play();
+                    if (this.mobile) {
+                        
+                        if (this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
+                            
+                            this.play();
+                        }
+                        clearTimeout(this.timer);
+                        if (!this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`) && this.videoAlready) {
+                            this.navigation.nav.classList.add(`${this.navigationClassName.nav}_active`);
+                            
+                        }
+                        if (!this.selector.video.paused && this.navigation.nav.classList.contains(`${this.navigationClassName.nav}_active`)) {
+                            this.timer = setTimeout(() => {
+                                this.navigation.nav.classList.remove(`${this.navigationClassName.nav}_active`);
+                                
+                            }, 2000);
+                        }
+                    }
+                    else{
+                        this.play();
+                    }
+                
+                    
                     break;
                     
                 case this.navigation.centerButton:
